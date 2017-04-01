@@ -1,0 +1,23 @@
+{
+  "name": "huge-test",
+  "version": "1.0.0",
+  "description": "Test code for Huge",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server  --content-base src/ --open",
+    "build": "webpack -p; cp -R ./src/index.html ./dist/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/andres_314/huge-test.git"
+  },
+  "author": "Andy Pi",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/andres_314/huge-test#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.0",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
