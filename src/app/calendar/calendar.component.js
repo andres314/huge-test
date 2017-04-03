@@ -5,9 +5,9 @@ export class CalendarComponent extends HTMLElement {
   static get selector () { return 'appointment-calendar' }
 
   connectedCallback () {
-    this.element = this.attachShadow({ mode: 'open' })
-    this.setInitialDate()
-    this.render()
+    this.element = this.attachShadow({ mode: 'open' });
+    this.setInitialDate();
+    this.render();
   }
 
   get selectedDate () {
@@ -15,12 +15,12 @@ export class CalendarComponent extends HTMLElement {
   }
 
   render () {
-    let selectedDateEmpty = new Date(this.selectedYear, this.selectedMonth, 1)
-    selectedDateEmpty = selectedDateEmpty.getDay()
-    const emptyDays = []
+    let selectedDateEmpty = new Date(this.selectedYear, this.selectedMonth, 1);
+    selectedDateEmpty = selectedDateEmpty.getDay();
+    const emptyDays = [];
 
     for (let i = 0; i < selectedDateEmpty; i++) {
-      emptyDays.push(i)
+      emptyDays.push(i);
     }
 
     const innerHTML = template({
@@ -36,47 +36,48 @@ export class CalendarComponent extends HTMLElement {
     this.element.innerHTML = `
       <style>${css}</style>
       ${innerHTML}
-    `
+    `;
 
-    this.calendar = this.element.querySelector('.ui-calendar')
+    this.calendar = this.element.querySelector('.ui-calendar');
 
-    this.addEventListeners()
+    this.addEventListeners();
   }
 
   addEventListeners () {
-    this.element.querySelectorAll('.day').forEach(element => element.addEventListener('click', () => this.selectDate(element.textContent)))
-    this.element.querySelector('#next-month').addEventListener('click', () => this.nextMonth())
-    this.element.querySelector('#prev-month').addEventListener('click', () => this.prevMonth())
-    this.element.querySelector('#date').addEventListener('click', () => this.togglecalendar())
+    this.element.querySelectorAll('.day').forEach(element => element.addEventListener('click', () => this.selectDate(element.textContent)));
+    this.element.querySelector('#next-month').addEventListener('click', () => this.nextMonth());
+    this.element.querySelector('#prev-month').addEventListener('click', () => this.prevMonth());
+    this.element.querySelector('#date').addEventListener('click', () => this.togglecalendar());
+    this.element.querySelector('#btn-close').addEventListener('click', () => this.close());
   }
 
   nextMonth () {
     if (this.selectedMonth === 11) {
-      this.selectedYear++
-      this.selectedMonth = 0
+      this.selectedYear++;
+      this.selectedMonth = 0;
     } else {
-      this.selectedMonth++
+      this.selectedMonth++;
     }
-    this.render()
-    this.dispatchEvent(new CustomEvent('next-month'))
+    this.render();
+    this.dispatchEvent(new CustomEvent('next-month'));
   }
 
   prevMonth () {
     if (this.selectedMonth === 0) {
-      this.selectedYear--
-      this.selectedMonth = 11
+      this.selectedYear--;
+      this.selectedMonth = 11;
     } else {
-      this.selectedMonth--
+      this.selectedMonth--;
     }
-    this.render()
-    this.dispatchEvent(new CustomEvent('prev-month'))
+    this.render();
+    this.dispatchEvent(new CustomEvent('prev-month'));
   }
 
   static get observedAttributes() { return ['closed'] }
 
   attributeChangedCallback() {
     if (this.element) {
-      this.render()
+      this.render();
     }
   }
 

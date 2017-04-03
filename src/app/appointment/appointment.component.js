@@ -24,13 +24,13 @@ export class AppointmentComponent extends HTMLElement {
     this.element.innerHTML = `
       <style>${style}</style>
       ${innerHTML}
-    `
+    `;
 
     this.addEventListeners();
   }
 
   addEventListeners () {
-    this.element.querySelector('appointment-calendar').addEventListener('selected-date', ({ detail }) => this.updateDate(detail))
+    this.element.querySelector('appointment-calendar').addEventListener('selected-date', ({ detail }) => this.updateDate(detail));
   }
 
   updateDate (date) {

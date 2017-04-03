@@ -16,7 +16,10 @@ export default ({ selectedYear, selectedMonth, selectedDay, selectedDate, inputD
       <img src="assets/calendar.svg" alt="calendar icon">
     </label>
     <div class="ui-calendar" ${closed ? 'hidden' : ''}>
-      <div class="calendar-preview">${inputDate}</div>
+      <div class="calendar-preheader">
+        <div class="calendar-preview">${inputDate}</div>
+        <button id="btn-close">x</button>
+      </div>
       <div class="calendar-header">
         <button type="button" id="prev-month"><</button>
         <h5>${months[selectedMonth]} ${selectedYear}</h5>

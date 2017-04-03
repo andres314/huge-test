@@ -38,25 +38,45 @@ button{
 	z-index: 1;
 }
 
+.calendar-preheader {
+	display: flex
+}
+
 .calendar-preview {
-    font-size: .6875em;
+	display: inline-block;
+	flex-basis: 92%;
+	font-size: .6875em;
 	height: 13px;
-	padding: 4px 5px 10px 9px;
+	padding: 4px 0 10px 9px;
+}
+
+#btn-close {
+	flex-basis: 8%;
+	font-size: 1em;
+	font-weight: 400;
+	background: transparent;
+	padding: 0;
+	position: relative;
+	top: -3px;
+	border-radius: 50%;
+	border: 1px solid;
+	right: 5px;
+	height: 25px;
 }
 
 .calendar-header {
 	background: #f1f1f1;
 	font-weight: 400;
 	height: 40px;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	display: flex;
 }
 
 .calendar-header h5 {
 	margin: 4px 5px 0;
-    font-size: .9em;
-    line-height: 30px;
+	font-size: .9em;
+	line-height: 30px;
 }
 
 .calendar-header button {
@@ -75,7 +95,7 @@ button{
 	font-size: .9em;
 	justify-content: space-around;
 	list-style: none;
-    margin: 0;
+	margin: 0;
 	padding: 1em 0;
 	width: 100%;
 }
@@ -111,7 +131,7 @@ button{
 
 .day.selected {
 	background: #EF008C;
-    color: rgba(255,255,255,0.87);
+	color: rgba(255,255,255,0.87);
 }
 
 .empty-day {
