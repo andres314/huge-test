@@ -12,7 +12,7 @@ export default ({ selectedYear, selectedMonth, selectedDay, selectedDate, inputD
   return `
     <label for="date">
       <span class="sr-only">Choose a date:</span>
-      <input id="date" name="date" type="text" readonly value="${inputDate}" placeholder="Choose a date...">
+      <input id="date" name="date" type="text" value="${inputDate}" placeholder="Choose a date...">
       <img src="assets/calendar.svg" alt="calendar icon">
     </label>
     <div class="ui-calendar" ${closed ? 'hidden' : ''}>
@@ -42,6 +42,5 @@ export default ({ selectedYear, selectedMonth, selectedDay, selectedDate, inputD
         </button>
       `).join('')}
       </div>
-    </div>
-  `
+    </div>`;
 }

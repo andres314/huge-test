@@ -8,11 +8,19 @@ export class CalendarComponent extends HTMLElement {
   connectedCallback () {
     this.element = this.attachShadow({ mode: 'open' });
     this.setInitialDate();
+    // Render the view
     this.render();
   }
 
   get selectedDate () {
     return new Date(this.selectedYear, this.selectedMonth, this.selectedDay)
+  }
+
+  get getInputDate () {
+    let inputDate = sessionStorage.getItem('appointment-date');
+    inputDate = (inputDate)?inputDate:'';
+    sessionStorage.removeItem('appointment-date');
+    return inputDate;
   }
 
   render () {
@@ -106,14 +114,14 @@ export class CalendarComponent extends HTMLElement {
     this.selectedMonth = date.getMonth();
     this.selectedDay = date.getDate();
     this.selectDateOnCalendar = this.selectedDate;
-    this.inputDate = '';
+    this.inputDate = this.getInputDate;
   }
 
   selectDate (day) {
     this.selectedDay = parseInt(day);
     this.selectDateOnCalendar = this.selectedDate;
     this.inputDate = this.selectedDate.toLocaleDateString();
-    this.dispatchEvent(new CustomEvent('selected-date', { detail: this.selectDateOnCalendar }));
+    this.dispatchEvent(new CustomEvent('update-date', { detail: this.inputDate }));
     this.close();
   }
 }

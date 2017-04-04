@@ -11,10 +11,18 @@ export class TimeComponent extends HTMLElement {
 
   connectedCallback () {
     this.element = this.attachShadow({ mode: 'open' });
-    this.selected = '12:00 PM';
     this.times = this.getTimes();
-
+    this.setInitialTime();
+    // Render the view
     this.render();
+  }
+
+  setInitialTime (){
+    let initialTime = sessionStorage.getItem('appointment-time');
+    initialTime = (initialTime)?initialTime:'12:00 PM';
+    sessionStorage.removeItem('appointment-time');
+    this.selected = initialTime;
+    this.selectTime(initialTime);
   }
 
   getTimes () {
@@ -50,5 +58,15 @@ export class TimeComponent extends HTMLElement {
       <style>${css}${globalCss}</style>
       ${innerHTML}
     `;
+
+    this.addEventListeners();
+  }
+
+  addEventListeners () {
+    this.element.querySelector('select').addEventListener('change', ({ target }) => this.selectTime(target.value))
+  }
+
+  selectTime (time) {
+    this.dispatchEvent(new CustomEvent('update-time', { detail: time }))
   }
 }
