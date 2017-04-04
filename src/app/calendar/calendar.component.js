@@ -1,5 +1,6 @@
-import template from './calendar.template';
+import tpl from './calendar.template';
 import css from './calendar.css';
+import globalCss from '../../styles/global.css';
 
 export class CalendarComponent extends HTMLElement {
   static get selector () { return 'appointment-calendar' }
@@ -23,7 +24,7 @@ export class CalendarComponent extends HTMLElement {
       emptyDays.push(i);
     }
 
-    const innerHTML = template({
+    const innerHTML = tpl({
       selectedYear: this.selectedYear,
       selectedMonth: this.selectedMonth,
       selectedDay: this.selectedDay,
@@ -34,7 +35,7 @@ export class CalendarComponent extends HTMLElement {
     })
 
     this.element.innerHTML = `
-      <style>${css}</style>
+      <style>${css}${globalCss}</style>
       ${innerHTML}
     `;
 

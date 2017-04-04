@@ -1,4 +1,4 @@
-import template from './appointment.template';
+import tpl from './appointment.template';
 import style from './appointment.css';
 
 export class AppointmentComponent extends HTMLElement {
@@ -16,7 +16,7 @@ export class AppointmentComponent extends HTMLElement {
   }
 
   render () {
-    const innerHTML = template({
+    const innerHTML = tpl({
       date: this.date,
       closed: this.closed
     })

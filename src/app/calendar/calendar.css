@@ -1,5 +1,6 @@
 :host {
 	position: relative;
+	width: 300px;
 }
 
 input {
@@ -17,25 +18,16 @@ img {
 	margin-left: 5px;
 }
 
-button{
-	border: 0;
-	cursor: pointer;
-}
-
-.label-txt {
-	display: block;
-	margin: 0 0 1em
-}
-
 .ui-calendar {
 	background: #fff;
 	border-radius: 1px;
 	box-shadow:0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
-	left: 0;
+    left: -3px;
 	padding: 10px 3px 3px;
 	position: absolute;
-	top: 28px;
-	z-index: 1;
+	top: -7px;
+    width: 95%;
+    z-index: 1;
 }
 
 .calendar-preheader {
@@ -47,7 +39,7 @@ button{
 	flex-basis: 92%;
 	font-size: .6875em;
 	height: 13px;
-	padding: 4px 0 10px 9px;
+	padding: 4px 0 10px 11px;
 }
 
 #btn-close {

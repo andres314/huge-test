@@ -1,0 +1,19 @@
+:host {
+	width: 260px;
+}
+
+
+select {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 1px;
+    height: 26px;
+    padding: 0 10px;
+    width: 230px;
+    -webkit-appearance: none;
+}
+
+#clock {
+	top: 8px;
+    position: relative;
+}

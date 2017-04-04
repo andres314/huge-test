@@ -1,5 +1,10 @@
+h2 {
+	margin: 0 0 1em
+}
+
 .appointment-manager {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
+	align-items: flex-end;
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }

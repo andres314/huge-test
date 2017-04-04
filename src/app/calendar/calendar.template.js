@@ -11,7 +11,7 @@ export default ({ selectedYear, selectedMonth, selectedDay, selectedDate, inputD
 
   return `
     <label for="date">
-      <span class="label-txt">Please select a date for your appointment:</span>
+      <span class="sr-only">Choose a date:</span>
       <input id="date" name="date" type="text" readonly value="${inputDate}" placeholder="Choose a date...">
       <img src="assets/calendar.svg" alt="calendar icon">
     </label>
