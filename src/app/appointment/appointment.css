@@ -4,13 +4,14 @@
 }
 
 h2 {
+	flex: 1 100%;
 	margin: 0 0 1em
 }
 
 button {
 	background: #fff;
     border-radius: 1px;
-    box-shadow: 1px 1px 1px 0px rgba(0,0,0,.26);
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.26);
     font-size: .8em;
     height: 28px;
     line-height: 28px;
@@ -20,15 +21,21 @@ button {
 }
 
 .appointment-manager {
-	align-items: flex-end;
+    align-items: flex-start;
 	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	max-width: 640px
+	max-width: 710px;
+}
+
+.form-pickers{
+	align-items: baseline;
+    display: inline-flex;
+    flex: 2 auto;
 }
 
 .form-actions {
-	flex-basis: 100%;
+	flex: 1 100%;
     text-align: center;
     padding: 25px 0;
 }

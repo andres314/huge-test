@@ -1,0 +1,34 @@
+:host {
+	flex: 1 auto;
+}
+
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	display: block;
+	margin: 0 0 10px
+}
+
+label span {
+	padding-left: 10px
+}
+
+label span:before {
+	border: 1px solid #f1f1f1;
+	border-radius: 50%;
+	box-shadow: 0 0 1px 1px #000, 1px 1px 1px 0 rgba(0,0,0,.26);
+	content: '';
+	display: inline-block;
+	height: 10px;
+    left: -5px;
+    position: relative;
+	width: 10px;
+}
+
+label input:checked + span:before {
+	background-color: rgba(0,0,0,.87);
+}
