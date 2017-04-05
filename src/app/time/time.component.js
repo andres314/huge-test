@@ -28,19 +28,47 @@ export class TimeComponent extends HTMLElement {
 			let min = time % 60;
 			min = (min < 10)?'0'+min:min;
 			if (time < 12 * 60) {
-				return (time - time % 60) / 60 + ':' + min + ' AM';
+				let hour = (time - time % 60) / 60,
+					timeInt = hour + '.' + min;
+
+				if(timeInt > currentHour){
+					return hour + ':' + min + ' AM';
+				}else{
+					return 0;
+				}
 			}
-			let hour = (time - time % 60 - 12*60) / 60;
+			let hour = (time - time % 60 - 12*60) / 60,
+				timeInt = hour+'.'+min,
+				tmpCurrentHour = currentHour - 12;
+
 			hour = (hour==0)?'12':hour;
-			return hour + ':' + min + ' PM';
+			if(timeInt > tmpCurrentHour){
+				return hour + ':' + min + ' PM';
+			}else{
+				return 0;
+			}
 		};
 
+		// Get current selected day(by default today)
+		let currentDate = this.getAttribute('date').split('/');
+		// Proceed depending on the format
+		if(currentDate.length > 1){
+			let today = new Date();
+			const isToday = currentDate[1] == today.getDate() && Number(currentDate[0]) - 1 == today.getMonth() && currentDate[2] == today.getFullYear();
+			currentDate = (isToday)?today:new Date(Number(currentDate[2]), Number(currentDate[0]) - 1, Number(currentDate[1]));
+		}else{
+			currentDate = new Date(currentDate[0]);
+		}
 		let times = [],
+			currentHour = currentDate.getHours() + '.' + currentDate.getMinutes(),
 			startHour = 0,
 			endHour = 24,
 			duration = 15 ;
 		for (let t = startHour * 60; t < endHour * 60; t += duration) {
-			times[times.length] = timeToString(t);
+			let currentTime = timeToString(t);
+			if(currentTime){
+				times[times.length] = currentTime;
+			}
 		}
 
 		return times;
@@ -59,6 +87,13 @@ export class TimeComponent extends HTMLElement {
 		`;
 
 		this.addEventListeners();
+	}
+
+	// Update time frame and render the view again
+	rerender () {
+		this.times = this.getTimes();
+		this.setInitialTime();
+		this.render();
 	}
 
 	// Add events listeners

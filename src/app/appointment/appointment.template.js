@@ -5,7 +5,7 @@ export default ({date, time, closed, saveMsg, filter}) => `
 			<appointment-filter filter="${filter}"></appointment-filter>
 			<div class="form-pickers">
 				<appointment-calendar filter="${filter}" date="${date}" ${closed ? 'closed' : ''}></appointment-calendar>
-				<appointment-time></appointment-time>
+				<appointment-time date="${date}"></appointment-time>
 			</div>
 			<div class="form-actions">
 				<button id="save" type="button">Save</button>

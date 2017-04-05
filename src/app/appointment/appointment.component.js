@@ -78,6 +78,9 @@ export class AppointmentComponent extends HTMLElement {
 	updateDate (date) {
 		this.date = date;
 		this.dateModified = 1;
+		let timeComponent = this.element.querySelector('appointment-time');
+		timeComponent.setAttribute('date', date);
+		timeComponent.rerender();
 	}
 
 	// Update time value to the manager

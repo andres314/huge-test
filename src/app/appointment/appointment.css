@@ -25,17 +25,29 @@ button {
 	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	max-width: 710px;
 }
 
 .form-pickers{
 	align-items: baseline;
     display: inline-flex;
     flex: 2 auto;
+    flex-wrap: wrap;
+    padding: 10px 10px 0;
 }
 
 .form-actions {
 	flex: 1 100%;
     text-align: center;
     padding: 25px 0;
+}
+
+@media only screen and (min-width : 683px) {
+    .form-pickers {
+        padding-top: 0;
+    }
+}
+@media only screen and (min-width : 768px) {
+    .appointment-manager {
+        max-width: 768px;
+    }
 }
